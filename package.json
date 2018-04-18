@@ -1,0 +1,19 @@
+{
+  "private": false,
+  "dependencies": {
+    "html2canvas": "*"
+  },
+  "peerDependencies": {
+    "axios": "^0.17.1",
+    "cross-env": "^5.1",
+    "font-awesome": "~4.7.0",
+    "bootstrap-less": "^3.3.7",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "react": "^15.6.2",
+    "react-dom": "^15.4.2",
+    "prop-types": "^15.6.0",
+    "react-bootstrap": "^0.32.0"
+  },
+  "devDependencies": {}
+}
