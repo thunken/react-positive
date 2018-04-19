@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { Modal, Button, CloseButton } from 'react-bootstrap';
+import { Modal, Button, CloseButton, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { Denizen } from './Denizen';
 import Loader from 'react-loader';
 import html2canvas from 'html2canvas';
@@ -224,6 +224,12 @@ export default class ReactPositive extends React.Component {
                                    onChange={this.toggleScreenshot}
                                    checked={this.state.sendScreenshot} />Send screenshot
                         </label>
+                        &nbsp;
+                        <OverlayTrigger
+                            placement="right"
+                            overlay={<Tooltip id="screenshot-tooltip">A screenshot can help us troubleshoot your issue.</Tooltip>}>
+                            <i className="fa fa-info-circle text-info" />
+                        </OverlayTrigger>
                     </div>
                     <div className="checkbox">
                         <label>
@@ -234,6 +240,12 @@ export default class ReactPositive extends React.Component {
                                    onChange={this.toggleLocation}
                                    checked={this.state.sendLocation} />Send location
                         </label>
+                        &nbsp;
+                        <OverlayTrigger
+                            placement="right"
+                            overlay={<Tooltip id="location-tooltip">Your location can help us troubleshoot your issue. It will not be shared with third parties.</Tooltip>}>
+                            <i className="fa fa-info-circle text-info" />
+                        </OverlayTrigger>
                     </div>
                     {this.renderScreenshot()}
                 </div>
