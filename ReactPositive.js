@@ -6,6 +6,7 @@ import { Modal, Button, CloseButton } from 'react-bootstrap';
 import { Denizen } from './Denizen';
 import Loader from 'react-loader';
 import html2canvas from 'html2canvas';
+import {notify} from 'react-notify-toast';
 
 export default class ReactPositive extends React.Component {
 
@@ -175,6 +176,7 @@ export default class ReactPositive extends React.Component {
         axios
             .post(this.props.feedbackController, data)
             .then(res => {
+                notify.show('Your feedback has been sent. Thank you.', 'success');
                 objectRef.initialState();
                 objectRef.forceUpdate();
             })
@@ -202,7 +204,7 @@ export default class ReactPositive extends React.Component {
                 </div>
                 <div className="form-group">
                     <div className="input-group">
-                        <span className="input-group-addon"><i className="fa fa-file-text-o"/></span>
+                        <span className="input-group-addon description-addon"><i className="fa fa-file-text-o"/></span>
                         <textarea id="description"
                                   required="required"
                                   className="form-control"
@@ -265,9 +267,9 @@ export default class ReactPositive extends React.Component {
                     </Modal.Body>
 
                     <Modal.Footer>
-                        <Button bsStyle="danger" onClick={this.closeModal}><b>Cancel</b></Button>
+                        <Button className="btn btn-gray" onClick={this.closeModal}>Cancel</Button>
                         <Button type="submit" bsStyle="primary">
-                            Send feedback&nbsp;{formLoader}
+                            Send&nbsp;{formLoader}
                         </Button>
                     </Modal.Footer>
                 </form>
@@ -279,10 +281,10 @@ export default class ReactPositive extends React.Component {
         return (
             <div id="feedback-wrapper" data-html2canvas-ignore={true}>
                 <button id="feedback-button"
-                        className="btn btn-primary"
+                        className="btn btn-gray"
                         onClick={this.openModal}
                         data-html2canvas-ignore={true}>
-                    <i className="fa fa-exclamation-circle" />
+                    <i className="fa fa-comment" />
                 </button>
                 {this.renderModal()}
             </div>
