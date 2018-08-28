@@ -296,7 +296,7 @@ export default class ReactPositive extends React.Component {
                         className="btn btn-gray"
                         onClick={this.openModal}
                         data-html2canvas-ignore={true}>
-                    <i className="fa fa-comment" />
+                    <i className="fas fa-comment" />
                 </button>
                 {this.renderModal()}
             </div>
