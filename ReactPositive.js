@@ -191,7 +191,7 @@ export default class ReactPositive extends React.Component {
             <div className="feedback-form-wrapper">
                 <div className="form-group">
                     <div className="input-group">
-                        <span className="input-group-addon"><i className="fa fa-envelope-o"/></span>
+                        <span className="input-group-addon"><i className="far fa-envelope"/></span>
                         <input id="email"
                                type="email"
                                name="email"
@@ -204,7 +204,7 @@ export default class ReactPositive extends React.Component {
                 </div>
                 <div className="form-group">
                     <div className="input-group">
-                        <span className="input-group-addon description-addon"><i className="fa fa-file-text-o"/></span>
+                        <span className="input-group-addon description-addon"><i className="far fa-file-alt"/></span>
                         <textarea id="description"
                                   required="required"
                                   className="form-control"
