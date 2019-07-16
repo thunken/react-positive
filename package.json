@@ -3,7 +3,7 @@
   "version": "1.0.21-fa-5",
   "private": false,
   "dependencies": {
-    "html2canvas": "*"
+    "html2canvas": "^1.0.0-alpha.12"
   },
   "peerDependencies": {
     "axios": "^0.17.1",
