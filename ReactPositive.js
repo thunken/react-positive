@@ -152,11 +152,11 @@ export default class ReactPositive extends React.Component {
         );
     }
 
-    openModal(event) {
+    openModal() {
         this.updateState({ open: true });
     }
 
-    closeModal(event) {
+    closeModal() {
         this.updateState({ open: false });
     }
 
@@ -179,6 +179,7 @@ export default class ReactPositive extends React.Component {
                 notify.show('Your feedback has been sent. Thank you.', 'success');
                 objectRef.initialState();
                 objectRef.forceUpdate();
+                objectRef.closeModal();
             })
             .catch(error => {
                 this.updateState({ displayFormLoader: false });
@@ -256,7 +257,7 @@ export default class ReactPositive extends React.Component {
     renderModal() {
         let formLoader = null;
         if (this.state.displayFormLoader) {
-            formLoader = (<i className="fa fa-circle-o-notch fa-spin"/>);
+            formLoader = (<i className="fas fa-circle-notch fa-spin"></i>);
         }
 
         return (
