@@ -179,8 +179,6 @@ export default class ReactPositive extends React.Component {
                 notify.show('Your feedback has been sent. Thank you.', 'success');
                 objectRef.initialState();
                 objectRef.forceUpdate();
-<<<<<<< Updated upstream
-=======
                 objectRef.closeModal();
                 objectRef.updateState(
                     {
@@ -190,7 +188,6 @@ export default class ReactPositive extends React.Component {
                         }
                     }
                 );
->>>>>>> Stashed changes
             })
             .catch(error => {
                 this.updateState({ displayFormLoader: false });
