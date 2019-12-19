@@ -179,6 +179,18 @@ export default class ReactPositive extends React.Component {
                 notify.show('Your feedback has been sent. Thank you.', 'success');
                 objectRef.initialState();
                 objectRef.forceUpdate();
+<<<<<<< Updated upstream
+=======
+                objectRef.closeModal();
+                objectRef.updateState(
+                    {
+                        screenshotLoaded: false,
+                        formData: {
+                            image: null
+                        }
+                    }
+                );
+>>>>>>> Stashed changes
             })
             .catch(error => {
                 this.updateState({ displayFormLoader: false });
@@ -261,7 +273,7 @@ export default class ReactPositive extends React.Component {
 
         return (
             <Modal show={this.state.open}
-                   onEntered={this.loadContent}
+                   onEnter={this.loadContent}
                    backdrop={false}
                    id="feedback-modal"
                    data-html2canvas-ignore={true}
