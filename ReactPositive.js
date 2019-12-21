@@ -17,6 +17,7 @@ export default class ReactPositive extends React.Component {
         this.submitFeedback = this.submitFeedback.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.resetModal = this.resetModal.bind(this);
         this.inputChange = this.inputChange.bind(this);
         this.toggleScreenshot = this.toggleScreenshot.bind(this);
         this.toggleLocation = this.toggleLocation.bind(this);
@@ -27,7 +28,7 @@ export default class ReactPositive extends React.Component {
         this.state = {
             open: false,
             formData: {
-                email: this.props.defaultEmail,
+                email: '',
                 description: '',
                 browser: null,
                 image: null
@@ -157,7 +158,22 @@ export default class ReactPositive extends React.Component {
     }
 
     closeModal(event) {
-        this.updateState({ open: false });
+        this.updateState(
+            {
+                open: false
+            }
+        );
+    }
+
+    resetModal(event) {
+        this.updateState(
+            {
+                formData: {
+                    image: null,
+                    description: ''
+                }
+            }
+        );
     }
 
     submitFeedback(event) {
@@ -180,16 +196,8 @@ export default class ReactPositive extends React.Component {
                 objectRef.initialState();
                 objectRef.forceUpdate();
                 objectRef.closeModal();
-                objectRef.updateState(
-                    {
-                        screenshotLoaded: false,
-                        formData: {
-                            image: null
-                        }
-                    }
-                );
             })
-            .catch(error => {
+            .finally(error => {
                 this.updateState({ displayFormLoader: false });
             });
     }
@@ -200,20 +208,20 @@ export default class ReactPositive extends React.Component {
             <div className="feedback-form-wrapper">
                 <div className="form-group">
                     <div className="input-group">
-                        <span className="input-group-addon"><i className="fa fa-envelope-o"/></span>
+                        <span className="input-group-addon"><i className="far fa-envelope"/></span>
                         <input id="email"
                                type="email"
                                name="email"
                                onChange={this.inputChange}
                                required="required"
-                               value={this.state.formData.email}
+                               value={this.state.formData.email || this.props.defaultEmail}
                                className="form-control"
                                placeholder={this.props.emailPlaceholder} />
                     </div>
                 </div>
                 <div className="form-group">
                     <div className="input-group">
-                        <span className="input-group-addon description-addon"><i className="fa fa-file-text-o"/></span>
+                        <span className="input-group-addon description-addon"><i className="far fa-file-alt"/></span>
                         <textarea id="description"
                                   required="required"
                                   className="form-control"
@@ -265,12 +273,13 @@ export default class ReactPositive extends React.Component {
     renderModal() {
         let formLoader = null;
         if (this.state.displayFormLoader) {
-            formLoader = (<i className="fa fa-circle-o-notch fa-spin"/>);
+            formLoader = (<span key="form-loader"><i className="fa fa-circle-notch fa-spin"/></span>);
         }
 
         return (
             <Modal show={this.state.open}
                    onEnter={this.loadContent}
+                   onExited={this.resetModal}
                    backdrop={false}
                    id="feedback-modal"
                    data-html2canvas-ignore={true}
